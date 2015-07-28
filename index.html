@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Документ без названия</title>
+    <style type="text/css">
+      html, body{
+        margin:0px; padding:0px; height:100%; width:100%;
+      }
+      #container{
+        position:relative;
+        margin:auto 0 -50px;
+        height:100%;
+        min-height:100%;
+        height:auto !important;
+      }
+      #left{
+        position:relative;
+        width:150px;
+        height:100%;
+        min-height:100%;
+        height:auto !important;
+        background-color:#999999;
+        float:left;
+      }
+      #right{
+        position:relative;
+        width:150px;
+        height:100%;
+        min-height:100%;
+        height:auto !important;
+        background-color:#999999;
+        float:right;
+      }
+      #center{
+        position:relative;
+        width:100%;
+        height:100%;
+        min-height:100%;
+        height:auto !important;
+        background-color:#CCCCCC;
+        float:left;
+        margin:0px 150px 0px 150px;
+      }
+      #footer{
+        position:relative;
+        clear:both;
+        width:100%;
+        height:50px;
+        background-color:#9999CC;
+        border-top:1px solid #333333;
+      }
+    </style>
+    <style type="text/css">
+      #count_ratings {
+        width: 50px;
+      }
+      .rating-width {
+        width: 50px;
+      }
+      ol {
+        list-style-type: none;
+        counter-reset: item;
+      }
+      li:before {
+        content: counter(item) ') ';
+        counter-increment: item;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="container">
+      <div id="left">Левый сайдбар
+
+        <!-- Кнопки, объединенные в группу с помощью класса .btn-group -->
+        <div class="btn-group-vertical">
+          <!-- Обычные кнопки -->
+          <button type="button" class="btn btn-warning">Обычная кнопка</button>
+          <button type="button" class="btn btn-danger">Обычная кнопка</button>
+          <!-- Кнопка с выпадающим меню -->
+          <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+              Кнопка с выпадающим меню
+              <span class="caret"></span>
+            </button>
+            <!-- Выпадающее меню -->
+            <ul class="dropdown-menu">
+              <!-- Пункты меню -->
+              <li><a href="#">Пункт 1</a></li>
+              <li><a href="#">Пункт 2</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Пункт 3</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="right">
+        Правый сайдбар
+      </div>
+
+      <div id="center">
+        <div id="subject">
+          <p>
+            <label for="title_subject">названия предмета: <input type="text" size="40" id="title_subject" value="subject_title"></label>
+            &nbsp;
+            <label for="count_ratings">количество оценок/занятий: <input type="number" id="count_ratings" value="3" min="0" max="40" step="1" size="10"></label>
+            <span id="build" onclick="build_items()">build </span>
+          </p>
+        </div>
+
+        <div id="subitems">
+        </div>
+
+        <div id="items" style="visibility: hidden;">
+          <ol>
+            <li class="rating-item">
+              <label for="rating-value[0]">Оценка: <input type="number" id="rating-value[0]" value="5" min="0" max="5" step="1" size="10" class="rating-width"></label>
+              <label><input type="radio" name="browser[0]" value="disrespectfully"> Неуважительно</label>
+              <label><input type="radio" name="browser[0]" value="respectfully"> Уважительно</label>
+              <label><input type="radio" name="browser[0]" value="rating"> оценка</label>
+            </li>
+
+            <li class="rating-item">
+              <label for="rating-value[1]">Оценка: <input type="number" id="rating-value[1]" value="5" min="0" max="5" step="1" size="10" class="rating-width"></label>
+              <label><input type="radio" name="browser[1]" id="disrespectfully" value="disrespectfully"> Неуважительно</label>
+              <label><input type="radio" name="browser[1]" id="respectfully" value="respectfully"> Уважительно</label>
+              <label><input type="radio" name="browser[1]" id="rating" value="rating"> оценка</label>
+            </li>
+
+            <li class="rating-item">
+              <label for="rating-value[2]">Оценка: <input type="number" id="rating-value[2]" value="5" min="0" max="5" step="1" size="10" class="rating-width"></label>
+              <label><input type="radio" name="browser[2]" value="disrespectfully"> Неуважительно</label>
+              <label><input type="radio" name="browser[2]" value="respectfully"> Уважительно</label>
+              <label><input type="radio" name="browser[2]" value="rating"> оценка</label>
+            </li>
+          </ol>
+        </div>
+
+        <div id="calculation" style="visibility: hidden;">
+
+        <p>
+          <b>
+            <span id="demo" onclick="myFunction()"><span>Пересчитать</span> доли пропущенных занятий:</span>
+          </b>
+
+          <br />
+          <label for="f">по уважительной причине: <span>10%</span></label>
+          <br />
+          <label for="f">по неуважительной причине: <span>10%</span></label>
+          <br />
+          <p id="result"></p>
+
+          <script>
+            function myFunction() {
+              document.getElementById("demo").style.color = "red";
+
+              var
+                count_ratings = document.getElementById("count_ratings").value;
+
+              document.getElementById("result").innerHTML = count_ratings;
+
+              var x = document.querySelectorAll("input#rating-value");
+              var radios = document.getElementsByTagName('input');
+              var count_ratings = document.getElementById('count_ratings').value;
+              console.log('count:' + count_ratings);
+              var i;
+              console.log(radios);
+              for (i = 0; i < x.length; i++) {
+                console.log('x:' + x[i].value);
+              }
+              for (i = 0; i < radios.length; i++) {
+
+                if (radios[i].type === 'number' && radios[i].id !== 'count_ratings') {
+                  value = radios[i].value;
+                  console.log('number:' + value);
+                }
+                if (radios[i].type === 'radio' && radios[i].checked) {
+                  // get value, set checked flag or do whatever you need to
+                  value = radios[i].value;
+                  console.log('radio:' + value);
+                }
+              }
+            }
+
+            function build_items() {
+              console.log('function build_items()');
+              var
+                subitems = document.getElementById("subitems"),
+                items = document.getElementById("items"),
+                calculation = document.getElementById("calculation");
+
+              calculation.style.visibility = "visible";
+              subitems.innerHTML = "";
+              ol = document.createElement("ol");
+
+              count_ratings = document.getElementById("count_ratings").value;
+              console.log(count_ratings);
+              for(var i =0; i < count_ratings; i++) {
+
+                li = document.createElement("li");
+                subitems.appendChild(ol);
+                ol.appendChild(li);
+
+                label = document.createElement("label");
+                label.setAttribute("for", "rating-value["+i+"]");
+                input = document.createElement("input");
+                input.setAttribute("type", "number");
+                input.setAttribute("id", "rating-value["+i+"]");
+                input.setAttribute("min", "0");
+                input.setAttribute("max", "5");
+                input.setAttribute("step", "1");
+                input.setAttribute("class", "rating-width");
+
+                li.appendChild(label);
+                label.innerHTML = "оценка:";
+                label.appendChild(input);
+
+                label = document.createElement("label");
+                label.innerHTML = " Неуважительно";
+                input = document.createElement("input");
+                input.setAttribute("type", "radio");
+                input.setAttribute("name", "rate["+i+"]");
+                input.setAttribute("value", "disrespectfully");
+                li.appendChild(label);
+                label.appendChild(input);
+
+                label = document.createElement("label");
+                label.innerHTML = " Уважительно";
+                input = document.createElement("input");
+                input.setAttribute("type", "radio");
+                input.setAttribute("name", "rate["+i+"]");
+                input.setAttribute("value", "respectfully");
+                li.appendChild(label);
+                label.appendChild(input);
+
+                label = document.createElement("label");
+                label.innerHTML = " Оценка";
+                input = document.createElement("input");
+                input.setAttribute("type", "radio");
+                input.setAttribute("name", "rate["+i+"]");
+                input.setAttribute("value", "rating");
+                li.appendChild(label);
+                label.appendChild(input);
+
+              }
+            }
+          </script>
+        </p>
+      </div>
+
+      <div id="check_fields">
+        <span onclick="check_fields()">выполнить проверку полей</span>
+        <p id="credit_accepted"></p>
+        <form id="form_send" action="rating.php" method="post">
+          <button type="submit">Отправить</button>
+        </form>
+        <span onclick="send_on_server()">выполнить отправку данных</span>
+        <script>
+          function check_fields() {
+            console.log('function check_fields()');
+            if (validation())
+              out_result();
+          }
+
+          function send_on_server() {
+            console.log('function send_on_server()');
+          }
+
+          function validation() {
+            //полей на пустоту, на допустимость значений, деление на ноль
+            console.info('check empty_fields');
+
+            //полей на пустоту, на допустимость значений, деление на ноль
+            console.info('check permissibility_values');
+
+            //полей на пустоту, на допустимость значений, деление на ноль
+            console.info('check division on zero');
+
+            return true;
+          }
+
+          function out_result() {
+            //После проверки вывести результат
+            // (например,
+            // если средний балл больше 4 и
+            // доля пропущенных по неуважительной < 10 %,
+            // то зачет получен).
+            document.getElementById("credit_accepted").innerHTML = get_result() ? 'зачет принят' : 'зачет не принят';
+          }
+          function get_result() {
+            var
+              middle_mark = 4.3,
+              proportion_missed_disrespectful = 4.5;
+
+            return ((middle_mark >= 4.0) && (proportion_missed_disrespectful < 10.0));
+          }
+
+        </script>
+      </div>
+
+    </div>
+
+    <div id="footer">
+      футтер
+    </div>
+  </div>
+
+  </body>
+</html>
+
