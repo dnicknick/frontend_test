@@ -12,14 +12,17 @@
 
   </head>
 
-  <body>
-    <div id="container" ng-app="angApp" ng-controller="angController">
-      <div ng-include="'sidebar_left.html'"></div>
-      <div ng-include="'sidebar_right.html'"></div>
-      <div ng-include="'_center.html'"></div>
-      <div ng-include="'_footer.html'"></div>
+  <body ng-app="angApp" ng-controller="angController">
+    <div id="wrapper" class="container">
+      <div id="container">
+        <div id="left" ng-include="'sidebar_left.html'"></div>
+        <div id="right" ng-include="'sidebar_right.html'"></div>
+        <div id="center" ng-include="'_center.html'"></div>
+        <div id="footer" ng-include="'_footer.html'"></div>
+      </div>
     </div>
 
     <script src="js_script.js"></script>
   </body>
+
 </html>

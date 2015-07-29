@@ -10,7 +10,7 @@ html, body{
 }
 #left{
   position:relative;
-  width:150px;
+  /*width:200px;*/
   height:100%;
   min-height:100%;
   height:auto !important;
@@ -19,7 +19,7 @@ html, body{
 }
 #right{
   position:relative;
-  width:150px;
+  /*width:200px;*/
   height:100%;
   min-height:100%;
   height:auto !important;
@@ -28,13 +28,13 @@ html, body{
 }
 #center{
   position:relative;
-  width:100%;
+  width:500px;
   height:100%;
   min-height:100%;
   height:auto !important;
   background-color:#CCCCCC;
   float:left;
-  margin:0px 150px 0px 150px;
+  margin:0px 200px 0px 200px;
 }
 #footer{
   position:relative;
@@ -44,7 +44,6 @@ html, body{
   background-color:#9999CC;
   border-top:1px solid #333333;
 }
-
 
 #count_ratings {
   width: 50px;
