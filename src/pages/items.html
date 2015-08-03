@@ -1,21 +1,23 @@
 <div>
   <div id="rateitems">
     <ol ng-show="items_rate.length">
-      <h3>Оценки по предмету: {{title_subject}}</h3>
+      <h4>Оценки по предмету: '{{ title_subject }}'</h4>
+
       <li name="subitem[]" ng-repeat="item in items_rate">
         <label for="rating-value[{{ item.index }}]">
-          <input type="text" id="rating-value[{{ item.index }}]" class="rating-width" ng-model="item.value" />
+          <input type="text" id="rating-value[{{ item.index }}]" class="rating-width"
+                 ng-model="item.value" ng-click="change_rate(item.index)" />
           <label>
-            <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="rating">Оценка
+            <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="rating" ng-required="!item.value_type">Оценка
           </label>
         </label>
 
         <label>
-          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="disrespectfully">Неуваж-но
+          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="disrespectfully" ng-required="!item.value_type">Неуваж-но
         </label>
 
         <label>
-          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="respectfully">Уваж-но
+          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="respectfully" ng-required="!item.value_type">Уваж-но
         </label>
       </li>
     </ol>
@@ -45,4 +47,7 @@
     </div>
   </div>
 
+  <button class="btn btn-success" ng-disabled="form.$invalid || incomplete" ng-click="form_submit()">
+    <span class="glyphicon glyphicon-save"></span> Send Result
+  </button>
 </div>

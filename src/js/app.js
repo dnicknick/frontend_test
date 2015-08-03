@@ -1,12 +1,7 @@
-function send_on_server() {
-  document.forms.form.submit(); //@fixme
-}
-
 var angApp = angular.module('angApp', ['ngRoute']);
 
 angApp.config(function($routeProvider) {
   $routeProvider
-
     .when('/', {
       templateUrl: 'pages/home.html',
       controller: 'angController'
@@ -19,7 +14,16 @@ angApp.config(function($routeProvider) {
 });
 
 angApp.controller('itemsController', function($scope) {
-  $scope.incomplete = true;
+  $scope.init = function () {
+    $scope.title_subject = "subject_title";
+    $scope.incomplete = true;
+    $scope.ratesCount = 4;
+  };
+
+  $scope.change_rate = function(index_item_rate) {
+    $scope.items_rate[index_item_rate].value_type = 'rating';
+    $scope.checkfields();
+  };
 
   $scope.build_items = function () {
     var count_all_ratings = $scope.ratesCount;
@@ -107,12 +111,47 @@ angApp.controller('itemsController', function($scope) {
       $scope.calc_middle_mark = count_rates ? sum_rates / count_rates : 0;
     }
   };
+
+  $scope.form_submit = function() {
+    console.log(
+      angular.toJson([
+        { name : 'title_subject', value : $scope.title_subject },
+        { name : 'ratesCount', value : $scope.ratesCount },
+        { name : 'respectfully', value : $scope.calc_respectfully.toFixed(2.2) },
+        { name : 'disrespectfully', value : $scope.calc_disrespectfully.toFixed(2.2)},
+        { name : 'middle_mark', value : $scope.calc_middle_mark.toFixed(2.2)},
+        { name : 'is_accepted_credit', value : $scope.is_accepted_credit}
+      ])
+    );
+
+    var request = $http({
+      method  : 'POST',
+      url     : '/toUrl',
+      data    : (angular.toJson([
+        { name : 'title_subject', value : $scope.title_subject },
+        { name : 'ratesCount', value : $scope.ratesCount },
+        { name : 'respectfully', value : $scope.calc_respectfully.toFixed(2.2) },
+        { name : 'disrespectfully', value : $scope.calc_disrespectfully.toFixed(2.2)},
+        { name : 'middle_mark', value : $scope.calc_middle_mark.toFixed(2.2)},
+        { name : 'is_accepted_credit', value : $scope.is_accepted_credit}
+      ])),
+       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+    request.success(
+      function(data) {
+        if (!data.success) {
+          $scope.errorName = data.errors.name;
+        } else {
+          $scope.message = data.message;
+        }
+    });
+  };
 });
 
 angApp.controller('angController', function($scope) {
+  // for templateUrl: 'pages/home.html',
   $scope.init = function () {
-    $scope.title_subject = "subject_title";
-    $scope.incomplete = true;
+    $scope.title_subject = "NoName";
     $scope.ratesCount = 4;
   };
 });

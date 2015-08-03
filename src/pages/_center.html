@@ -1,5 +1,5 @@
 <form name="form" class="form-horizontal" role="form">
-  <div id="subject">
+  <div id="subject" ng-init="init()">
     <div class="form-group">
       <label class="control-label" for="title_subject">Название предмета:</label>
 
@@ -26,8 +26,4 @@
 
   <div id="main" ng-view>
   </div>
-
-  <button class="btn btn-success" ng-disabled="error || incomplete" onclick="send_on_server()">
-    <span class="glyphicon glyphicon-save"></span> Send Result
-  </button>
 </form>
