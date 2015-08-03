@@ -1,8 +1,8 @@
 <div>
   <div id="rateitems">
-    <ol ng-show="model.items_rate.length">
+    <ol ng-show="items_rate.length">
       <h3>Оценки по предмету: {{title_subject}}</h3>
-      <li name="subitem[]" ng-repeat="item in model.items_rate">
+      <li name="subitem[]" ng-repeat="item in items_rate">
         <label for="rating-value[{{ item.index }}]">
           <input type="text" id="rating-value[{{ item.index }}]" class="rating-width" ng-model="item.value" />
           <label>
@@ -24,7 +24,7 @@
   <div id="subitems">
   </div>
 
-  <div id="calculation" ng-show="model.items_rate.length">
+  <div id="calculation" ng-show="items_rate.length">
     <span id="demo"><span>Расчет</span> долей пропущенных занятий:</span>
 
     <div class="form-group">
