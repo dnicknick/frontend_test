@@ -1,6 +1,7 @@
 html, body{
   margin:0px; padding:0px; height:100%; width:100%;
 }
+
 #container{
   position:relative;
   margin:auto 0 -50px;
@@ -48,9 +49,12 @@ html, body{
 #count_ratings {
   width: 50px;
 }
+
+
 .rating-width {
   width: 50px;
 }
+
 ol {
   list-style-type: none;
   counter-reset: item;

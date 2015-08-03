@@ -1,0 +1,51 @@
+<div>
+  <div id="rateitems">
+    <ol ng-show="model.items_rate.length">
+      <h3>Оценки по предмету: {{title_subject}}</h3>
+      <li name="subitem[]" ng-repeat="item in model.items_rate">
+
+        <label for="rating-value[{{ item.index }}]">оценка:
+          <input type="text" id="rating-value[{{ item.index }}]" class="rating-width" ng-model="item.value" />
+          <label>
+            <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="rating">Оценка
+          </label>
+        </label>
+
+        <label>
+          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="disrespectfully">Неуважительно
+        </label>
+
+        <label>
+          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="respectfully">
+          Уважительно
+        </label>
+
+      </li>
+    </ol>
+  </div>
+
+  <div id="subitems">
+  </div>
+
+  <div id="calculation" ng-show="model.items_rate.length">
+    <span id="demo"><span>Расчет</span> долей пропущенных занятий:</span>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" ng-click="checkfields()">do_check</button>
+      </div>
+    </div>
+
+    <div>
+      <br/>
+      <label>по уважительной причине ( {{ calc_respectfully | number:2  }} ): <span id="calc_respectfully"></span>%</label>
+      <br/>
+      <label>по неуважительной причине ( {{ calc_disrespectfully | number:2  }} ): <span id="calc_disrespectfully"></span>%</label>
+      <br/>
+      <label>Средняя оценка ({{ calc_middle_mark | number:2 }}): <span id="middle_mark"></span></label>
+      <br/>
+      <label>Зачет: {{ is_accepted_credit ? 'принят' : 'не принят' }}</label>
+    </div>
+  </div>
+
+</div>
