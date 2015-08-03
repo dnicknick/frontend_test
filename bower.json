@@ -1,0 +1,34 @@
+{
+  "name": "prj_css",
+  "version": "0.2.0",
+  "authors": [
+    "dnn <dniknik@google.com>"
+  ],
+  "description": "test page",
+  "main": "index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "test",
+    "gulp",
+    "js",
+    "frontend"
+  ],
+  "license": "MIT",
+  "homepage": "ya.ru",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.3",
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "bootstrap-sass": "~3.3.5"
+  }
+}

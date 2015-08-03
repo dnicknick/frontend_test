@@ -1,29 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Тестовый одностраничник</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Тестовый одностраничник</title>
 
-
-    <!-- @fixme- сборщик должен и тянуть зависимости .. должны скачиваться при сборке. -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/style.min.css">
-    <!--<script src="js/angular.min.js"></script>-->
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css"> <!--style/style.min.css-->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>-->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
   </head>
 
   <body ng-app="angApp" ng-controller="angController">
-    <div id="wrapper" class="container">
-      <div id="container">
-        <div id="left" ng-include="'pages/sidebar_left.html'"></div>
-        <div id="right" ng-include="'pages/sidebar_right.html'"></div>
-        <div id="center" ng-include="'pages/_center.html'"></div>
-        <div id="footer" ng-include="'pages/_footer.html'"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4" ng-include="'pages/sidebar_left.html'"></div>
+        <div class="col-xs-6 col-md-4" ng-include="'pages/_center.html'"></div>
+        <div class="col-xs-6 col-md-4" ng-include="'pages/sidebar_right.html'"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-18 col-md-12" ng-include="'pages/_footer.html'"></div>
       </div>
     </div>
 

@@ -86,7 +86,8 @@ angApp.controller('itemsController', function ($scope) {
     for (var i = 0; i < $scope.model.items_rate.length; i++) {
       var type = $scope.model.items_rate[i].value_type;
       var value = $scope.model.items_rate[i].value;
-      if (!value && type === 'rating') {
+      if (type === 'rating') {
+        if (!value || value <= 0)
         is_valid = false;
       } else {
         if (type === 'undefined') {
@@ -146,5 +147,4 @@ angApp.controller('angController', function ($scope) {
     $scope.middle_mark = 0.0;
     $scope.ratesCount = 4;
   };
-
 });

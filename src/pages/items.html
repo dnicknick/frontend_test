@@ -3,8 +3,7 @@
     <ol ng-show="model.items_rate.length">
       <h3>Оценки по предмету: {{title_subject}}</h3>
       <li name="subitem[]" ng-repeat="item in model.items_rate">
-
-        <label for="rating-value[{{ item.index }}]">оценка:
+        <label for="rating-value[{{ item.index }}]">
           <input type="text" id="rating-value[{{ item.index }}]" class="rating-width" ng-model="item.value" />
           <label>
             <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="rating">Оценка
@@ -12,14 +11,12 @@
         </label>
 
         <label>
-          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="disrespectfully">Неуважительно
+          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="disrespectfully">Неуваж-но
         </label>
 
         <label>
-          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="respectfully">
-          Уважительно
+          <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="respectfully">Уваж-но
         </label>
-
       </li>
     </ol>
   </div>
@@ -38,11 +35,11 @@
 
     <div>
       <br/>
-      <label>по уважительной причине ( {{ calc_respectfully | number:2  }} ): <span id="calc_respectfully"></span>%</label>
+      <label>по уважительной причине: {{ calc_respectfully | number:2 }}%</label>
       <br/>
-      <label>по неуважительной причине ( {{ calc_disrespectfully | number:2  }} ): <span id="calc_disrespectfully"></span>%</label>
+      <label>по неуважительной причине: {{ calc_disrespectfully | number:2 }}%</label>
       <br/>
-      <label>Средняя оценка ({{ calc_middle_mark | number:2 }}): <span id="middle_mark"></span></label>
+      <label>Средняя оценка: {{ calc_middle_mark | number:2 }}</label>
       <br/>
       <label>Зачет: {{ is_accepted_credit ? 'принят' : 'не принят' }}</label>
     </div>

@@ -10,6 +10,11 @@ var debug = require('gulp-debug');
 
 //var browserSync = require('browser-sync').create();
 //return gulp.src(['src/partials/**/*.html', 'src/scripts/**/*.js'])
+var config = {
+  bootstrapDir: 'bower_components',
+  publicDir: 'app'
+};
+
 
 gulp.task('htmlify', function() {
   gulp.src('src/**/*.html')
@@ -22,8 +27,14 @@ gulp.task('htmlify', function() {
 });
 
 gulp.task('ngmin', function () {
-  return gulp.src('src/js/app.js')
-    .pipe(ngmin({dynamic: true}))
+  return gulp.src([
+    'src/js/app.js',
+    'bower_components/angular/*.js',
+    'bower_components/angular-route/*.js',
+    'bower_components/bootstrap/dist/js/*.js',
+    'bower_components/jquery/dist/*.js',
+  ])
+    //.pipe(ngmin({dynamic: true}))
     .pipe(gulp.dest('app/js'))
     //.pipe(notify('Gulp build:js done!'))
     ;
@@ -41,15 +52,18 @@ gulp.task('clean', function () {
 });
 
 gulp.task('css', function () {
-  return gulp.src('src/style/*.css')
+  return gulp.src(['src/style/*.css', config.bootstrapDir + '/bootstrap/dist/css/*.css'])
+  //return gulp.src('src/style/*.css')
+  //return gulp.src(['src/style/*.css', 'bower_components/bootstrap/dist/css/*.css'])
     //.pipe(debug({title: 'unicorn:'}))
-    .pipe(concatCss("style/style.css"))
+    //.pipe(concatCss("style/style.css"))
     //.pipe(uncss({
     //  html: ['index.html', 'pages/**/*.html', 'http://example.com']
     //}))
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(rename("style/style.min.css"))
-    .pipe(gulp.dest('app/'))
+    //.pipe(minifyCss({compatibility: 'ie8'}))
+    //.pipe(rename("style/style.min.css"))
+    //.pipe(gulp.dest('app/'))
+    .pipe(gulp.dest(config.publicDir + '/style'))
     //.pipe(notify('Gulp build:css done!'))
     ;
 });
