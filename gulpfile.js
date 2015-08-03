@@ -28,22 +28,22 @@ gulp.task('ngmin', function () {
 });
 
 gulp.task('css', function () {
-  return gulp.src(['src/style/*.css', config.bootstrapDir + '/bootstrap/dist/css/*.css'])
+  return
+    gulp.src([
+      config.bootstrapDir + '/bootstrap/dist/css/bootstrap.min.css',
+      'src/style/style.css'
+    ])
     .pipe(concatCss("style/style.css"))
-    .pipe(uncss({
-      html: ['app/index.html', 'app/pages/*.html']
-    }))
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(rename("style.min.css"))
+    .pipe(uncss({html: ['app/index.html', 'app/pages/*.html']}))
+    .pipe(minifyCss())
+    .pipe(rename('style.min.css'))
     .pipe(gulp.dest(config.publicDir + '/style'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/style/*.css', ['css'])
-  gulp.watch('src/js/*.js' , ['ngmin'])
   gulp.watch('src/**/*.html' , ['htmlify'])
+  gulp.watch('src/js/*.js' , ['ngmin'])
+  gulp.watch('src/style/*.css', ['css'])
 });
 
-gulp.task('build', ['css', 'htmlify', 'ngmin']);
-
-gulp.task('default',  ['css', 'htmlify', 'ngmin']);
+gulp.task('default', ['htmlify', 'css', 'ngmin']);
