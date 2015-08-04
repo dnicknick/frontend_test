@@ -6,7 +6,7 @@
       <li name="subitem[]" ng-repeat="item in items_rate">
         <label for="rating-value[{{ item.index }}]">
           <input type="text" id="rating-value[{{ item.index }}]" class="rating-width"
-                 ng-model="item.value" ng-click="change_rate(item.index)" />
+                 ng-model="item.value" ng-click="change_rate(item.index)" ng-pattern="/^\d+$/" />
           <label>
             <input type="radio" name="rate[{{ item.index }}]" ng-model="item.value_type" value="rating" ng-required="!item.value_type">Оценка
           </label>

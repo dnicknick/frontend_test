@@ -4,9 +4,10 @@
       <label class="control-label" for="title_subject">Название предмета:</label>
 
       <div>
-        <input type="text" id="title_subject" name="title_subject" placeholder="title for subject" required data-ng-model="title_subject" />
-        <span style="color:red" data-ng-show="form.title_subject.$dirty && form.title_subject.$invalid">
-          <span data-ng-show="form.title_subject.$error.required">Subject Title is required.</span>
+        <input type="text" id="title_subject" name="title_subject"
+               placeholder="title for subject" required ng-model="title_subject" />
+        <span style="color:red" ng-show="form.title_subject.$dirty && form.title_subject.$invalid">
+          <span ng-show="form.title_subject.$error.required">Subject Title is required.</span>
         </span>
       </div>
     </div>
@@ -15,10 +16,11 @@
       <label class="control-label" for="ratesCount">Количество оценок/занятий:</label>
 
       <div>
-        <input type="text" name="ratesCount" id="ratesCount" placeholder="number format" required data-ng-model="ratesCount" />
-          <span style="color:red" data-ng-show="form.ratesCount.$dirty && form.ratesCount.$invalid">
-            <span data-ng-show="form.ratesCount.$error.required">Count Ratings is required.</span>
-            <span data-ng-show="form.ratesCount.$error.number">Invalid number.</span>
+        <input type="text" name="ratesCount" id="ratesCount"
+               placeholder="number format" required ng-model="ratesCount" ng-pattern="/^\d+$/" />
+          <span style="color:red" ng-show="form.ratesCount.$dirty && form.ratesCount.$invalid">
+            <span ng-show="form.ratesCount.$error.required">Count Ratings is required.</span>
+            <span ng-show="form.ratesCount.$error.number">Invalid number.</span>
           </span>
       </div>
     </div>

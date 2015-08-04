@@ -28,13 +28,12 @@ gulp.task('ngmin', function () {
 });
 
 gulp.task('css', function () {
-  return
-    gulp.src([
+  return gulp.src([
       config.bootstrapDir + '/bootstrap/dist/css/bootstrap.min.css',
       'src/style/style.css'
     ])
     .pipe(concatCss("style/style.css"))
-    .pipe(uncss({html: ['app/index.html', 'app/pages/*.html']}))
+    //.pipe(uncss({html: ['app/index.html', 'app/pages/*.html']})) //@fixme commented for redeclare "input.ng-invalid-pattern"
     .pipe(minifyCss())
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest(config.publicDir + '/style'));

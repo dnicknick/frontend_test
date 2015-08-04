@@ -2,6 +2,11 @@
   width: 40px;
 }
 
+input.ng-invalid-pattern {
+  color:white;
+  background: red;
+}
+
 ol {
   list-style-type: none;
   counter-reset: item;
